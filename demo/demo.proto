@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+package demo;
+option go_package="./demo";
+
+message Request {
+  string ping = 1;
+}
+
+message CbRequest {
+  string IP = 1;
+  string port = 2;
+  string host = 3;
+}
+
+message Response {
+  string pong = 1;
+}
+
+service Demo {
+  rpc Ping(Request) returns(Response);
+  rpc Callback(CbRequest) returns(Response);
+}
