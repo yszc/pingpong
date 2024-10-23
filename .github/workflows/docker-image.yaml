@@ -25,10 +25,12 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
+      - name: List directory contents
+        run: ls -la
       - name: Build grpc image
         uses: docker/build-push-action@v6.3.0
         with:
-          context: ./grpc
+          context: "{{github.workspace}}/grpc"
           platforms: linux/amd64,linux/arm64
           push: true
           tags: |
@@ -36,7 +38,7 @@ jobs:
       - name: Build http image
         uses: docker/build-push-action@v6.3.0
         with:
-          context: ./http
+          context: "{{github.workspace}}/http"
           platforms: linux/amd64,linux/arm64
           push: true
           tags: |
