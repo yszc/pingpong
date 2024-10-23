@@ -28,6 +28,7 @@ jobs:
       - name: Build grpc image
         uses: docker/build-push-action@v6.3.0
         with:
+          path_context:./grpc
           file: ./grpc/Dockerfile
           platforms: linux/amd64,linux/arm64
           push: true
@@ -36,6 +37,7 @@ jobs:
       - name: Build http image
         uses: docker/build-push-action@v6.3.0
         with:
+          path_context:./http
           file: ./http/Dockerfile
           platforms: linux/amd64,linux/arm64
           push: true
