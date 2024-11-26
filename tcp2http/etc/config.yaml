@@ -1,0 +1,4 @@
+TCPServer:
+  Port: 8888
+HTTPTarget:
+  URL: "http://localhost:5050/endpoint"
